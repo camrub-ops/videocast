@@ -1,0 +1,15 @@
+
+{{ define "main" }}
+<article>
+  <h1>{{ .Title }}</h1>
+  <p><em>{{ .Date.Format "02 Jan 2006" }}</em></p>
+
+  {{ with .Params.youtubeId }}
+    {{< youtube id=. >}}
+  {{ end }}
+
+  <div class="content">
+    {{ .Content }}
+  </div>
+</article>
+{{ end }}

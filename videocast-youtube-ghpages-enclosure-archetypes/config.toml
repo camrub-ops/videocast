@@ -1,0 +1,21 @@
+
+baseURL = "https://tu-usuario.github.io/tu-repo/"
+languageCode = "es"
+title = "Mi Video Podcast"
+theme = "minimal"
+
+[params]
+  description = "Video‑podcast sobre tecnología y cultura digital."
+  author = "Xavier Fernández"
+  cover = "/img/cover.jpg"
+
+[outputs]
+  home = ["HTML", "RSS", "podcast"]
+  section = ["HTML", "RSS"]
+
+[outputFormats]
+  [outputFormats.podcast]
+    name = "podcast"
+    mediaType = "application/rss+xml"
+    baseName = "feed"
+    isPlainText = false

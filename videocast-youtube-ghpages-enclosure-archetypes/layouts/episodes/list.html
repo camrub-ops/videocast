@@ -1,0 +1,21 @@
+
+{{ define "main" }}
+<h1>Video Podcast</h1>
+<div class="grid">
+  {{ range .Pages }}
+    {{ $id := .Params.youtubeId }}
+    {{ $local := printf "/thumbs/%s.jpg" $id }}
+    {{ $remote := printf "https://img.youtube.com/vi/%s/hqdefault.jpg" $id }}
+    <article class="card">
+      <a href="{{ .RelPermalink }}">
+        {{ if $id }}
+          <img src="{{ $local }}" alt="Miniatura de {{ .Title }}"
+               loading="lazy" onerror="this.onerror=null;this.src='{{ $remote }}';" />
+        {{ end }}
+        <h2>{{ .Title }}</h2>
+      </a>
+      <time datetime="{{ .Date }}">{{ .Date.Format "2006-01-02" }}</time>
+    </article>
+  {{ end }}
+</div>
+{{ end }}

@@ -1,0 +1,28 @@
+
+{{- $episodes := where .Site.RegularPages "Section" "episodes" -}}
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+  <channel>
+    <title>{{ .Site.Title }}</title>
+    <link>{{ .Site.BaseURL }}</link>
+    <description>{{ .Site.Params.description }}</description>
+    {{ range $episodes }}
+      <item>
+        <title>{{ .Title }}</title>
+        <description><![CDATA[{{ .Params.description }}]]></description>
+        <guid>{{ .Permalink }}</guid>
+        <pubDate>{{ .Date }}</pubDate>
+        <itunes:episodeType>full</itunes:episodeType>
+        {{- if .Params.videoFile -}}
+          <enclosure url="{{ .Params.videoFile }}" type="video/mp4" length="{{ with .Params.videoLength }}{{ . }}{{ else }}0{{ end }}" />
+        {{- else if .Params.audio -}}
+          <enclosure url="{{ .Params.audio }}" type="audio/mpeg" length="0" />
+        {{- else -}}
+          {{ with .Params.youtubeId }}
+            <link>https://www.youtube.com/watch?v={{ . }}</link>
+          {{ end }}
+        {{- end -}}
+      </item>
+    {{ end }}
+  </channel>
+</rss>

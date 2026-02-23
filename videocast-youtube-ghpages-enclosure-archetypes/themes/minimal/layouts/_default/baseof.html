@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ .Site.Title }} — {{ .Title }}</title>
+  <link rel="stylesheet" href="/style.css">
+  {{ if and .IsPage .Params.youtubeId }}
+    <meta property="og:image" content="https://img.youtube.com/vi/{{ .Params.youtubeId }}/hqdefault.jpg"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+  {{ else }}
+    <meta property="og:image" content="{{ .Site.BaseURL }}{{ .Site.Params.cover }}"/>
+  {{ end }}
+</head>
+<body>
+  <header>
+    <h1><a href="/">{{ .Site.Title }}</a></h1>
+    <nav>
+      <a href="/episodes/">Episodios</a>
+      <a href="/index.xml">RSS</a>
+      <a href="/feed.xml">Podcast (enclosure)</a>
+    </nav>
+  </header>
+  <main>
+    {{ block "main" . }}{{ end }}
+  </main>
+  <footer>
+    <p>© {{ now.Format "2006" }} {{ .Site.Params.author }}</p>
+  </footer>
+</body>
+</html>
