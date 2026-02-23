@@ -1,12 +1,12 @@
 
-baseURL = "https://tu-usuario.github.io/tu-repo/"
+baseURL = "https://camrub-ops.github.io/videocast/"
 languageCode = "es"
 title = "Mi Video Podcast"
 theme = "minimal"
 
 [params]
   description = "Video‑podcast sobre tecnología y cultura digital."
-  author = "Xavier Fernández"
+  author = "Xavi74"
   cover = "/img/cover.jpg"
 
 [outputs]
